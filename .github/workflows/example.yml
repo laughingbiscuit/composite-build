@@ -10,5 +10,5 @@ jobs:
     name: something
     steps:
     - uses: actions/checkout@v2
-    - run: ./build.sh $${{ matrix.val }}
+    - run: ./build.sh ${{ matrix.val }}
  
