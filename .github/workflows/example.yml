@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: set-matrix
-      run: ./setMatrix.sh
+      run: echo "::set-output name=matrix::$(cat inputs.json)"
   something:
     needs: get-vals
     runs-on: ubuntu-latest
