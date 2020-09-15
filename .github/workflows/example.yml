@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: echo "::set-env name=INPUTS::Â$(cat inputs)" 
+    - run: echo "::set-env name=INPUTS::$(cat inputs)" 
   something:
     runs-on: ubuntu-latest
     strategy:
