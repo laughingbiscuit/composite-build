@@ -4,16 +4,19 @@ on:
 jobs:
   get-vals:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - uses: actions/checkout@v2
-    - run: echo "::set-env name=INPUTS::$(cat inputs)" 
+    - id: set-matrix
+      run: ./setMatrix.sh
   something:
+    needs: get-vals
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        val: [x, y, z]
+      matrix: ${{fromJSON(needs.job1.outputs.matrix)}}
     name: something
     steps:
     - uses: actions/checkout@v2
-    - run: ./build.sh ${{ matrix.val }}
+    - run: ./build.sh ${{ matrix }}
  
