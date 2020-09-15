@@ -1,0 +1,14 @@
+name: Build
+on:
+  - push
+jobs:
+  something:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        val: [x, y, z]
+    name: something
+    steps:
+    - uses: actions/checkout@v2
+    - run: ./build.sh $${{ matrix.val }}
+ 
